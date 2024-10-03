@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { filter } from 'rxjs/operators';
+import { PeopleService } from '../share/service/people.service'
 
 
 export interface Person {
@@ -27,57 +28,9 @@ export class HomePage  {
     {name:"María del Mar", surname:"Valencia Valencia", age:46, isFav:true},
     {name:"Lydia", surname:"garcía Robles", age:11, isFav:false}];
 
-  constructor(private router: Router, private alertController: AlertController) {
-    this.people.push({
-      name: "Alonso",
-      surname: "Sánchez Moreno de Vega",
-      age: 20,
-      isFav: false
-    });
-
-    this.router.events.pipe(
-      filter(e => e instanceof NavigationStart)
-    ).subscribe(e => {
-      const navigation = this.router.getCurrentNavigation();
-      if (navigation && navigation.extras.state) {
-        const newPerson: PersonCard = navigation.extras.state['person'];
-
-        // Verificar si hay una nueva persona y añadirla
-        if (newPerson) {
-          this.people.push(newPerson);
-        }
-      }
-    });
+  constructor(public peopleSvc: PeopleService) {
 
   }
 
-  async confirmDelete(person: PersonCard) {
-    const alert = await this.alertController.create({
-      header: 'Confirmar',
-      message: `¿Estás seguro de que quieres eliminar a ${person.name} ${person.surname}?`,
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Cancelado');
-          }
-        },
-        {
-          text: 'Eliminar',
-          handler: () => {
-            this.deletePerson(person);
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
-
-  deletePerson(person: PersonCard) {
-    this.people = this.people.filter(p => p !== person);
-  }
 }
 

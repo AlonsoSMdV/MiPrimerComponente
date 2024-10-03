@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { ToastController } from '@ionic/angular';
+
 
 
 @Component({
@@ -14,28 +14,14 @@ export class PersonalCardComponent  implements OnInit {
   @Input('age') age:number = 0;
   @Input() isFav:boolean = false
   
-  @Output() onDelete:EventEmitter<void> = new EventEmitter<void>
-  constructor(private toastController: ToastController) {}
-  delete(){
-    this.onDelete.emit()
-  }
-  async onFavClick(event: any) {
-    this.isFav = !this.isFav;
-    await this.presentToast(this.isFav);
-    event.stopPropagation(); 
-  }
-
-  async presentToast(isFav: boolean) {
-    const toast = await this.toastController.create({
-      message: `Usuario ${isFav ? 'añadido' : 'eliminado'} ${isFav? 'a' : 'de'} favoritos`,
-      duration: 2000,
-      position: 'bottom',
-      color: isFav ? 'success' : 'danger',
-    });
-    toast.present();
-  }
+  constructor() {}
 
   ngOnInit() {}
+
+  @Output() favClicked: EventEmitter<void> = new EventEmitter<void>
+  onFavClick(event: MouseEvent){
+    this.favClicked.emit();
+  }
 
 
 }

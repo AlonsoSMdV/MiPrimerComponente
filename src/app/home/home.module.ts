@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { PersonalCardComponent } from '../share/components/personal-card/personal-card.component';
+import { ShareModule } from '../share/share.module';
 
 
 @NgModule({
@@ -13,8 +14,9 @@ import { PersonalCardComponent } from '../share/components/personal-card/persona
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    ShareModule
   ],
-  declarations: [HomePage, PersonalCardComponent]
+  declarations: [HomePage]
 })
 export class HomePageModule {}
