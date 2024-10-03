@@ -1,8 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      
+      Blank
     </ion-title>
+    <app-people-counte number="{{(peopleSvc.people$ | async)?.length}}"></app-people-counte>
   </ion-toolbar>
 </ion-header>
 
