@@ -1,37 +1,30 @@
 <ion-card>
+  <ion-card-header>
+    <ion-card-title>
+      <ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="2">
+            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-col>
+          <ion-col size="2">
+            <ion-text color="dark"> {{name}} {{ surname | slice:0:1 | uppercase }}. </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-title>
+  </ion-card-header>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col  size="8">
-        <ion-col class="ion-align-items-center">
-          <ion-card-header>
-            <ion-avatar>
-              <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-            </ion-avatar>
-            <ion-card-title>{{ name }} {{ surname }}</ion-card-title>
-              
-          </ion-card-header>
-        </ion-col>
-        <ion-col class="ion-align-items-start">
-          <ion-card-subtitle><strong>Nombre</strong></ion-card-subtitle>
-          <ion-card-content>
-            {{ name }}
-          </ion-card-content>
-          <ion-card-subtitle><strong>Apellidos</strong></ion-card-subtitle>
-          <ion-card-content>
-            {{ surname }}
-          </ion-card-content>
-          <ion-card-subtitle><strong>Edad</strong></ion-card-subtitle>
-          <ion-card-content>
-            {{ age }}
-          </ion-card-content>
-        </ion-col>
-      </ion-col>
-      
-    </ion-row>
-  </ion-grid>
+  <ion-card-content>
+    <ion-item>
+      <ion-input label="Nombre" type="text" placeholder="Nombre" labelPlacement="floating" [value]="name" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Apellido" type="text" placeholder="Apellido" labelPlacement="floating" [value]="surname" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Edad" type="text" placeholder="Edad" labelPlacement="floating" [value]="age+' años'" readonly></ion-input>
+    </ion-item>
+  </ion-card-content>
 </ion-card>
-
-  
 
   
