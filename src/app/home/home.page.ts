@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, IonInput } from '@ionic/angular';
 import { filter } from 'rxjs/operators';
 import { PeopleService } from '../share/service/people.service'
 
@@ -32,5 +32,28 @@ export class HomePage  {
 
   }
 
+  onFavClicked(idx:number){
+    this.people[idx].isFav = !this.people[idx].isFav
+  }
+
+  async submit(nameInput: IonInput, surnameInput: IonInput, ageInput: IonInput) {
+    try {
+      const nombreElemento = await nameInput.getInputElement();
+      const apellidoElemento = await surnameInput.getInputElement();
+      const edadElemento = await ageInput.getInputElement();
+
+      const name = nombreElemento.value;
+      const surname = apellidoElemento.value;
+      const age = edadElemento.value;
+
+      this.peopleSvc.add({
+        name: name,
+        surname: surname,
+        age: age
+      });
+    } catch (error) {
+      console.error('Error al obtener los valores: ', error)
+    }
+  }
 }
 

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      <ion-button [routerLink]= "['/data-collector']"> Añadir </ion-button>
+      
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,13 +14,13 @@
   </ion-header>
 
   <ion-item>
-    <ion-input label="Nombre" type="text" plaholder="Introduzca el nombre" laberPlacement="floating" #name></ion-input>
+    <ion-input label="Nombre" type="text" plaholder="Introduzca el nombre" laberPlacement="floating" #nameInput></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input label="Apellidos" type="text" plaholder="Introduzca los apellidos" laberPlacement="floating" #surname></ion-input>
+    <ion-input label="Apellidos" type="text" plaholder="Introduzca los apellidos" laberPlacement="floating" #surnameInput></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input label="Edad" type="text" plaholder="Introduzca la edad" laberPlacement="floating" #age></ion-input>
+    <ion-input label="Edad" type="text" plaholder="Introduzca la edad" laberPlacement="floating" #ageInput></ion-input>
   </ion-item>
   <ion-button expand="full" (click)="submit(name, surname, age)"></ion-button>
   <ion-grid>
