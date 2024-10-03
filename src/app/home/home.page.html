@@ -7,7 +7,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
@@ -19,12 +18,10 @@
         <app-personal-card
         [name]="person.name"
         [surname]="person.surname"
-        [age]="person.age">
+        [age]="person.age"
+        (onDelete)="confirmDelete(person)">
         </app-personal-card>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <strong>Ready to create an app?</strong>
-  <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
 </ion-content>
